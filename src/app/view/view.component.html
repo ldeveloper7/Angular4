@@ -1,0 +1,45 @@
+<div class="">
+  <div class="panel panel-default" style="height: 650px;overflow-y: scroll;">
+    <table class="table table-hover">
+      <tr>
+        <th>Featured Image</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>Category</th>
+        <th>Tags</th>
+        <th>Type</th>
+        <th>Author</th>
+        <th>Image</th>
+      </tr>
+      <tr *ngFor="let singlearticle of article; let i = index">
+        <td class=""><a href="https://blavity.com/{{ singlearticle.slug }}" target="_blank">
+          <img src="https://res.cloudinary.com/blavity/image/upload/w_200/{{singlearticle.wp_featuredImage}}" class="img-rounded" height="75px" width="100px">
+        </a></td>
+        <td class=""><a href="https://blavity.com/{{ singlearticle.slug }}" target="_blank">
+          {{ singlearticle.title }}</a></td>
+        <td class="">{{ singlearticle.subTitle }}</td>
+        <td class="">
+          <span *ngFor="let category of singlearticle.categories; let ic=index">
+            <a href="https://blavity.com/categories/{{ category.slug }}" target="_blank">{{ category.name }}<span
+              *ngIf="singlearticle.categories.length-1 > ic">,</span></a>
+          </span>
+        </td>
+        <td class="">
+          <span *ngFor="let tags of singlearticle.tags; let it=index">
+            <a href="https://blavity.com/tags/{{ tags.slug }}" target="_blank">{{ tags.name }}<span
+              *ngIf="singlearticle.tags.length-1 > it ">,</span></a>
+          </span>
+        </td>
+        <td class="text-uppercase font-weight-bold">
+          <a href="https://blavity.com/categories/{{ singlearticle.postType }}" target="_blank">{{
+            singlearticle.postType }}</a></td>
+        <td><a href="https://blavity.com/author/{{ singlearticle._author.username }}" target="_blank">
+          {{ singlearticle._author.username }}</a></td>
+        <td class=""><a href="https://blavity.com/author/{{ singlearticle._author.username }}" target="_blank">
+          <img src="{{singlearticle._author.profileImagePreference}}" class="img-rounded"
+               title="{{singlearticle._author.display_name}}"
+               alt="{{singlearticle._author.display_name}}" height="50px" width="50px">
+        </a></td>
+    </table>
+  </div>
+</div>
